@@ -16,7 +16,7 @@ int main(){
         return 0;
     }
     Employee employees[n];
-    int arr[n+1];
+    int arr[n];
     for(int i=0; i<n; i++){
         printf("Enter details of employee %d:\n", i);
         printf("ID: ");
@@ -30,7 +30,7 @@ int main(){
     int m;
     printf("Enter the index of the employee whose details you want to display: ");
     scanf("%d", &m);
-    if(m<0||m>=n)
+    if(m<0||m>n)
     {
         printf("Invalid index.\n");
         return 0;
@@ -45,17 +45,10 @@ void seek_position(int n,int arr[],Employee employees[],const char*filename){
         printf("Error opening file.\n");
         return;
     }
-    arr[0]=0;
-    int i=0;
-    int count=0;
-    while(i<n)
+    for(int i=0; i<n; i++) 
     {
-        
-        
-        int value=fprintf(fp, "%d %s %.2f\n", employees[i].id, employees[i].name, employees[i].salary);
-        count=count+value;
-        arr[i+1]=count;
-        i++;
+    fprintf(fp, "%d %s %.2f\n", employees[i].id, employees[i].name, employees[i].salary);
+    arr[i+1] = ftell(fp);   
     }
     fclose(fp);
 }
