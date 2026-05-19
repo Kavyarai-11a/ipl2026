@@ -4,8 +4,8 @@ typedef struct {
     char name[20];
     float salary;
 } Employee;
-void seek_position(int n,int arr[],Employee employees[],const char*filename);
-void read_details(int m,int arr[],Employee employees[],const char* filename);
+void seek_position(int n,long arr[],Employee employees[],const char*filename);
+void read_details(int m,long arr[],Employee employees[],const char* filename);
 int main(){
     int n;
     printf("Enter the number of employees: ");
@@ -16,7 +16,7 @@ int main(){
         return 0;
     }
     Employee employees[n];
-    int arr[n];
+    long arr[n];
     for(int i=0; i<n; i++){
         printf("Enter details of employee %d:\n", i);
         printf("ID: ");
@@ -38,7 +38,7 @@ int main(){
     read_details(m,arr,employees, "employees.txt");
     return 0;
 }
-void seek_position(int n,int arr[],Employee employees[],const char*filename){
+void seek_position(int n,long arr[],Employee employees[],const char*filename){
     FILE *fp=fopen("employees.txt","w");
     if(fp == NULL)
     {
@@ -52,7 +52,7 @@ void seek_position(int n,int arr[],Employee employees[],const char*filename){
     }
     fclose(fp);
 }
-void read_details(int m,int arr[],Employee employees[],const char* filename){
+void read_details(int m,long arr[],Employee employees[],const char* filename){
     FILE *fp=fopen(filename,"r");
     if(fp == NULL)
     {
