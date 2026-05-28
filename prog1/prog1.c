@@ -92,6 +92,6 @@ void delete_data(int n,int d,Employee employees[],const char* filename){
         printf("Error opening file.\n");
         return;
     }
-    fwrite(employees, sizeof(Employee), n-1, fp);
+    fwrite(employees, sizeof(Employee),  n-1, fp);
     fclose(fp);
 }
